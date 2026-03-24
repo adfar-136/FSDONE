@@ -165,6 +165,29 @@ const accent = isBreak ? "#3b82f6" : "#22c55e";
                 </div>
             </form>
         </div>
+        {formState.error && (
+            <p style={{ color: "#ef4444", fontSize: "13px", marginTop: "10px" }}>
+              ❌ {formState.error}
+            </p>
+          )}
+ 
+          {/*
+            SUCCESS MESSAGE
+            formState.success is false by default.
+            When settingsAction returns success: true, this renders.
+          */}
+          {formState.success && (
+            <p style={{ color: "#22c55e", fontSize: "13px", marginTop: "10px" }}>
+              ✅ Applied! Work: {workDuration}m · Break: {breakDuration}m
+            </p>
+          )}
+ 
+          {/* Warning shown only when timer is running */}
+          {isRunning && (
+            <p style={{ color: "#f59e0b", fontSize: "12px", marginTop: "8px" }}>
+              ⚠️ Pause the timer to change settings.
+            </p>
+          )}
     </div>
   )
 }
